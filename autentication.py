@@ -6,16 +6,43 @@ def cadastrar_usuario():
     if user in users:
         print("O usuário não pode ser cadastrado")
     else:
-        users[user] = input("Digite a senha do novo usuário: ").lower().strip()
-        print("Usuário cadastrado")
+        x = input("digite a senha: ").lower().strip()
+        y = input("confirme a senha: ").lower().strip()
+
+        if x == y:
+            users[user] = x
+            print("Usuário cadastrado")
+        else:
+            print("senhas incompatíveis")
+
+
 
 def autenticar_usuario():
-    user = ("Digite o nome de usuário: ").lower().strip()
 
-    if user in users and users[user] ==  input("Digite a senha: ").lower().strip():
-        print("Acesso autorizado!")
+    user = input("Digite o nome de usuário: ").lower().strip()
+
+
+    if user in users:
+        senha = input("Digite a senha: ").lower().strip()
+
+        if users[user] == senha: 
+            print("Acesso autorizado!")
+        else:
+            senha = input("tente a senha novamente: ").lower().strip()
+
+            if senha == users[user]:
+                print("acesso autorizado!")
+            else:
+                senha = input("tente a senha novamente: ").lower().strip()
+                
+                if senha == users[user]:
+                    print("acesso autorizado!")
+                else:
+                    print("acesso negado!")
     else:
-        print("Usuário ou senha incorretos")
+        print("este usuário não existe")
+        
+        
     
 condition = True
 
@@ -27,7 +54,7 @@ while condition:
 - Cadastrar usuário [2]
 - Listar usuários   [3]
 - Sair              [4]
-
+\n
 '''))
 
     if option == 1:
